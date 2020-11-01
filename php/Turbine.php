@@ -1,6 +1,5 @@
 <?php
 
-
 class Turbine
 {
 
@@ -11,7 +10,7 @@ class Turbine
     }
 
     /**
-     * @return mixed
+     * @return array
      */
     public function getItems()
     {

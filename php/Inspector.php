@@ -1,5 +1,6 @@
 <?php
 
+include "Turbine.php";
 
 class Inspector
 {
@@ -8,13 +9,13 @@ class Inspector
 
 
     public function __construct() {
-        $this -> $turbine = Turbine::class;
+        $this->turbine = new Turbine();
     }
 
     public function damageReport()
     {
         foreach ($this->turbine->getItems() as $value) {
-            echo $this::inspectTurbine($value);
+            echo $this::inspectTurbine($value) . "\n";
         }
     }
 
@@ -23,16 +24,16 @@ class Inspector
      * @return string
      */
     private function inspectTurbine($item) {
+        if ($item % 15 === 0) {
+            return "Coating Damage & Lighting Strike";
+        }
         if ($item % 3 === 0) {
             return "Coating Damage";
         }
         if ($item % 5 === 0) {
             return "Lightning Strike";
         }
-        if ($item % 15 === 0) {
-            return "Coating Damage & Lighting Strike";
-        }
-        return $item->toString();
+        return strval($item);
     }
 
 }
