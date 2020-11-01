@@ -2,4 +2,5 @@
 require('Inspector.php');
 
 $inspector = new Inspector();
-$inspector->damageReport();
+echo json_encode($inspector->damageReport());
+exit();
