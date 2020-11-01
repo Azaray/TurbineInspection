@@ -4,9 +4,9 @@
 class Turbine
 {
 
-    public $items;
+    private $items;
 
-    function _construct() {
+    public function __construct() {
         $this->items = range(1, 100);
     }
 
