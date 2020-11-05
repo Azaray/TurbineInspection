@@ -6,7 +6,50 @@
     <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
+<table id="turbineItems" class="table">
+    <thead>
+    <tr>
+        <th scope="col">Item Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
 
+
+<script type="text/php" src="outputData.php"></script>
+<script src="js/jquery-3.5.1.js"></script>
 <script src="js/bootstrap.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $.ajax({
+            url: 'outputData.php',
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (response) {
+                for (let i = 0; i < response.length; i++) {
+                    let tr_string = "<tr>";
+                    document.getElementsByTagName("td").innerHTML = response[i];
+                    switch (response[i]) {
+                        case "Coating Damage":
+                            tr_string += "<td class='table-secondary'></td>"
+                            break;
+                        case "Lightning Strike":
+                            tr_string += "<td class='table-warning'></td>"
+                            break;
+                        case "Coating Damage & Lightning Strike":
+                            tr_string += "<td class='table-danger'></td>"
+                            break;
+                        default:
+                            tr_string += "<td class='table-success'></td>"
+                    }
+                    tr_string += "</tr>"
+                    $("#turbineItems tbody").append(tr_string);
+                }
+            },
+        });
+    });
+</script>
+
 </body>
 </html>
