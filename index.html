@@ -2,54 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>Turbine Inspection</title>
 </head>
+
+
 <body>
-<table id="turbineItems" class="table">
-    <thead>
-    <tr>
-        <th scope="col">Item Status</th>
-    </tr>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
 
+<container style="position: relative; height: 150px; display:block;">
+</container>
+<div class="table-responsive" style="max-width: 350px; margin: auto;">
+    <h4 class="display-6" style="text-align: center">
+        Turbine Inspection
+    </h4>
+    <table id="turbineItems" class="table table-fixed">
+        <thead>
+        <tr>
+            <th>Item Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        for ($i = 1; $i <= 100; $i++) {
+            if ($i % 15 === 0) {
+                echo "<tr><td class='table-danger'>Coating Damage and Lightning Strike</td></tr>";
+            } else if ($i % 3 === 0) {
+                echo "<tr><td class='table-secondary'>Coating Damage</td></tr>";
+            } else if ($i % 5 === 0) {
+                echo "<tr><td class='table-warning'>Lightning Strike</td></tr>";
+            } else {
+                echo "<tr><td class='table-success'>$i</td></tr>";
+            }
+        }
+        ?>
 
-<script type="text/php" src="outputData.php"></script>
-<script src="js/jquery-3.5.1.js"></script>
-<script src="js/bootstrap.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $.ajax({
-            url: 'outputData.php',
-            type: 'GET',
-            dataType: 'JSON',
-            success: function (response) {
-                for (let i = 0; i < response.length; i++) {
-                    let tr_string = "<tr>";
-                    document.getElementsByTagName("td").innerHTML = response[i];
-                    switch (response[i]) {
-                        case "Coating Damage":
-                            tr_string += "<td class='table-secondary'></td>"
-                            break;
-                        case "Lightning Strike":
-                            tr_string += "<td class='table-warning'></td>"
-                            break;
-                        case "Coating Damage & Lightning Strike":
-                            tr_string += "<td class='table-danger'></td>"
-                            break;
-                        default:
-                            tr_string += "<td class='table-success'></td>"
-                    }
-                    tr_string += "</tr>"
-                    $("#turbineItems tbody").append(tr_string);
-                }
-            },
-        });
-    });
-</script>
+        </tbody>
+    </table>
+</div>
+
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/fixedTableHeader.css">
+
+<!--<script type="text/javascript">-->
+<!--    $(document).ready(function() {-->
+<!--        $.ajax({-->
+<!--            url: 'outputData.php',-->
+<!--            type: 'GET',-->
+<!--            dataType: 'JSON',-->
+<!--            success: function (response) {-->
+<!--                for (let i = 0; i < response.length; i++) {-->
+<!--                    let tr_string = "<tr>";-->
+<!--                    document.getElementsByTagName("td").innerHTML = response[i];-->
+<!--                    switch (response[i]) {-->
+<!--                        case "Coating Damage":-->
+<!--                            tr_string += "<td class='table-secondary'></td>"-->
+<!--                            break;-->
+<!--                        case "Lightning Strike":-->
+<!--                            tr_string += "<td class='table-warning'></td>"-->
+<!--                            break;-->
+<!--                        case "Coating Damage & Lightning Strike":-->
+<!--                            tr_string += "<td class='table-danger'></td>"-->
+<!--                            break;-->
+<!--                        default:-->
+<!--                            tr_string += "<td class='table-success'></td>"-->
+<!--                    }-->
+<!--                    tr_string += "</tr>"-->
+<!--                    $("#turbineItems tbody").append(tr_string);-->
+<!--                }-->
+<!--            },-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 
 </body>
 </html>
