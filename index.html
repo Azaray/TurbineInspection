@@ -10,34 +10,40 @@
 
 <container style="position: relative; height: 150px; display:block;">
 </container>
-<div class="table-responsive" style="max-width: 350px; margin: auto;">
-    <h4 class="display-6" style="text-align: center">
-        Turbine Inspection
-    </h4>
-    <table id="turbineItems" class="table table-fixed">
-        <thead>
-        <tr>
-            <th>Item Status</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
-        for ($i = 1; $i <= 100; $i++) {
-            if ($i % 15 === 0) {
-                echo "<tr><td class='table-danger'>Coating Damage and Lightning Strike</td></tr>";
-            } else if ($i % 3 === 0) {
-                echo "<tr><td class='table-secondary'>Coating Damage</td></tr>";
-            } else if ($i % 5 === 0) {
-                echo "<tr><td class='table-warning'>Lightning Strike</td></tr>";
-            } else {
-                echo "<tr><td class='table-success'>$i</td></tr>";
-            }
-        }
-        ?>
-
-        </tbody>
-    </table>
+<h4 class="display-6" style="text-align: center">
+    Turbine Inspection
+</h4>
+<div class="container py-3">
+    <div class="row">
+        <div class="col-lg-3 mx-auto bg-white rounded shadow">
+            <div class="table-responsive" style="max-width: 350px; margin: auto;">
+                <table id="turbineItems" class="table table-fixed">
+                    <thead>
+                    <tr>
+                        <th>Item Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    for ($i = 1; $i <= 100; $i++) {
+                        if ($i % 15 === 0) {
+                            echo "<tr><td class='table-danger'>Coating Damage and Lightning Strike</td></tr>";
+                        } else if ($i % 3 === 0) {
+                            echo "<tr><td class='table-secondary'>Coating Damage</td></tr>";
+                        } else if ($i % 5 === 0) {
+                            echo "<tr><td class='table-warning'>Lightning Strike</td></tr>";
+                        } else {
+                            echo "<tr><td class='table-success'>$i</td></tr>";
+                        }
+                    }
+                    ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/fixedTableHeader.css">
